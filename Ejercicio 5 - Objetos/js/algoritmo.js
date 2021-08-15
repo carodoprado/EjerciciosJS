@@ -22,8 +22,6 @@ do {
     
     let producto=new Producto(nombre, precio);
 
-    console.log(producto);
-
     resultado = sumaProducto(producto, resultado);
 
 } while (confirm("Desea ingresar un nuevo producto? "));
