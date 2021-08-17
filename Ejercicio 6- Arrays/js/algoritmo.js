@@ -27,6 +27,16 @@ class Carrito {
 
 let carrito = new Carrito();
 
+function pedirNombre() {
+  let nombre = prompt("Ingrese nombre del producto: ");
+  return nombre;
+}
+
+function pedirValor() {
+  let precio = parseFloat(prompt("Ingrese valor del producto: "));
+  return precio;
+}
+
 do {
   let nombre = pedirNombre();
   let precio = pedirValor();
@@ -37,13 +47,3 @@ do {
 let resultado = carrito.sumaProducto();
 
 alert("La suma total de productos es de: " + resultado);
-
-function pedirNombre() {
-  let nombre = prompt("Ingrese nombre del producto: ");
-  return nombre;
-}
-
-function pedirValor() {
-  let precio = parseFloat(prompt("Ingrese valor del producto: "));
-  return precio;
-}
