@@ -1,0 +1,34 @@
+.logo{
+
+    width: 5em
+}
+
+.bg-light {
+    background-color: #364437 !important;
+ }
+
+ .nav-link {
+    color: white !important;
+}
+
+.btn-outline-oscuro {
+    color: #fff;
+    
+    border-color: #212529;
+
+}
+
+.bg-oscuro{
+    
+    background-color: white !important;
+}
+
+.badge{
+
+    color: #364437 !important;
+}
+
+.botones:hover{
+
+    background-color: #364437;
+}
