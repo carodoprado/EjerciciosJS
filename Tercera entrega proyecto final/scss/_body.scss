@@ -1,0 +1,50 @@
+.botones:hover {
+
+    background-color: #364437;
+}
+
+.py-5 {
+
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+body {
+
+    overflow-x: hidden;
+    font-family: "Quicksand";
+
+    .overlay {
+
+
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-height: 599px;
+        position: relative;
+        background: $primary-color;
+        overflow: hidden;
+
+    }
+
+    .carousel-item {
+        img {
+
+            opacity: 0.6;
+        }
+    }
+
+    .slide_text {
+
+        color: white;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        margin-top: 14em;
+    }
+
+    .fw-bolder {
+        font-size: 1rem;
+    }
+}
+
