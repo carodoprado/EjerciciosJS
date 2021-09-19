@@ -204,6 +204,9 @@ body {
     width: 100%;
     margin-top: 14em;
     z-index: 999; }
+    @media only screen and (max-width: 992px) {
+      body .slide_text {
+        margin-top: 5.5em; } }
   body .fw-bolder {
     font-size: 1rem; }
 
