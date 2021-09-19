@@ -6,8 +6,29 @@ class Carrito {
     this.productos = []
   }
 
-  cargaProducto(producto) {
-    this.productos.push(producto);
+  cargaProducto(producto, cantidad) {
+    let encontrado = [];
+    encontrado = carrito.productos.find(function (currentValue, index) {
+
+      return currentValue.id == producto.id
+    });
+    if (encontrado !== undefined) {
+      let indice = carrito.productos.findIndex(function (currentValue, index) {
+
+        return currentValue.id == producto.id
+      });
+
+      this.productos[indice].cantidad = parseInt(this.productos[indice].cantidad) + parseInt(cantidad);
+
+
+
+    }
+    else {
+      producto.cantidad = parseInt(cantidad);
+      this.productos.push(producto);
+    }
+
+
   }
 
   sumaProducto() {
@@ -22,6 +43,8 @@ class Carrito {
 
 let carrito = new Carrito();
 let productos;
+
+/* Lee los productos de la API*/
 
 $(document).ready(function () {
 
@@ -41,8 +64,8 @@ $(document).ready(function () {
       $("#confirm").click(function (e) {
 
         e.preventDefault();
-
-        carrito.cargaProducto(productos[e.target.dataset.id]); /* Recupera el objeto producto del array según el ID del botón clickeado*/
+        let cantidad = $("#quantityInput").val();
+        carrito.cargaProducto(productos[e.target.dataset.id], cantidad); /* Recupera el objeto producto del array según el ID del botón clickeado*/
         localStorage.setItem("productos", JSON.stringify(carrito.productos));
         mostrarCantidad(carrito);
         dibujarCarrito();
@@ -64,15 +87,13 @@ $(document).ready(function () {
       $("#img-modal").attr("src", producto.imagen);
       $("#title-modal").html(producto.nombre);
       $("#subtitle-modal").html("$" + producto.precio);
-
       $("#addCartModal").hide();
-
       $("#quantityInput").val(1);
 
     });
 
     $("#vaciar").click(function (e) {
-
+      e.preventDefault();
       carrito.productos = [];
       localStorage.setItem("productos", JSON.stringify(carrito.productos));
       mostrarCantidad(carrito);
@@ -114,15 +135,16 @@ function mostrarCantidad(carrito) {
 
 function dibujarCard(producto) {
 
-
+  let delay = ("delay-" + producto.id);
   let divCol = document.createElement("div");
-  $(divCol).addClass("col mb-5");
+  $(divCol).addClass("col mb-5 animate__animated animate__fadeInUp " + delay);
   $("#container").append(divCol);
 
 
   let divCard = document.createElement("div");
   $(divCard).addClass("card h-100");
   $(divCol).append(divCard);
+
 
   /* Product image*/
 
@@ -235,6 +257,11 @@ function dibujarProductoCarrito(producto) {
   $(imagen).attr("src", producto.imagen);
   $(divDos).append(imagen);
 
+  let spanBadge = document.createElement("span")
+  $(spanBadge).addClass("badge bg-oscuro text-white ms-1 rounded-pill badgeAbs");
+  $(spanBadge).html(producto.cantidad);
+  $(divDos).append(spanBadge);
+
   let divTres = document.createElement("div");
   $(divTres).addClass("product-text");
   $(a).append(divTres);
@@ -246,19 +273,42 @@ function dibujarProductoCarrito(producto) {
 
   let span = document.createElement("span");
   $(span).addClass("font-weight-bold");
-  $(span).html("$" + producto.precio);
+
+  let precio = producto.precio * producto.cantidad;
+  $(span).html("$" + precio);
   $(divTres).append(span);
 
 
   let divCinco = document.createElement("div");
   $(divCinco).addClass("trash-icon");
+  $(divCinco).attr("data-id", producto.id);
   $(a).append(divCinco);
 
   let i = document.createElement("i");
   $(i).addClass("far fa-trash-alt");
   $(divCinco).append(i);
 
+/*Elimina un producto del carrito*/
 
+  $(".trash-icon").click(function (e) {
+
+    let id = $(e.currentTarget).attr("data-id");
+    let posicionArray = carrito.productos.findIndex(function (current) {
+      return current.id == id;
+
+    })
+
+    let productos = carrito.productos.filter((value, index) => {
+      if (carrito.productos[posicionArray] != undefined)
+        return value.id != carrito.productos[posicionArray].id;
+      return true;
+    })
+    carrito.productos = productos;
+    dibujarCarrito();
+    mostrarCantidad(carrito);
+    localStorage.setItem("productos", JSON.stringify(carrito.productos));
+  });
+  calculoTotal(carrito);
 
 }
 
@@ -271,7 +321,7 @@ $("#button-add").click(function () {
   $("#quantityInput").val(parseInt(value) + 1);
 
   let id = $("#confirm").attr("data-id");
-  let producto = productos[id]
+  let producto = productos[id];
   let precio = producto.precio;
 
 
@@ -298,3 +348,36 @@ $("#button-substract").click(function () {
 
 });
 
+/*Cálculo del total de productos*/
+
+function calculoTotal(carrito) {
+
+  let total = 0;
+
+  for (producto of carrito.productos) {
+
+    total = total + producto.precio * producto.cantidad;
+
+  }
+  $("#total").html("$" + total);
+
+}
+
+/*Alerta de confirmación de compra*/
+
+$("#comprar").click(function () {
+
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Pedido realizado con éxito',
+    text: 'Muchas gracias por tu compra!',
+
+  })
+
+  $("#btn-carrito").click();
+  carrito.productos = [];
+  dibujarCarrito();
+  mostrarCantidad(carrito);
+  localStorage.removeItem("productos");
+});

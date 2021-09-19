@@ -181,3 +181,41 @@
     text-decoration: none;
     background-color: #e3e6f0;
 }
+
+.row {
+    width: 100%;
+
+}
+
+p {
+
+    margin-top: 0.3rem !important;
+    font-size: large;
+}
+
+.badgeAbs {
+    position: fixed;
+    margin-left: -0.8rem !important;
+    margin-top: -0.5rem;
+    background-color: $primary-color !important;
+    color: white !important;
+
+}
+
+.swal2-confirm {
+
+    padding: 0.9em 2.1875em;
+    border: 0;
+    border-radius: 0.1875em;
+    background-color: $primary-color!important;
+    box-shadow: none;
+    color: #fff;
+    font-size: 1.125em;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.swal2-styled.swal2-confirm:focus {
+    box-shadow: 0 0 0 3px $terciary-color;
+}

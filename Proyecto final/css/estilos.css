@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 .logo {
   width: 5em; }
@@ -136,6 +137,35 @@
   text-decoration: none;
   background-color: #e3e6f0; }
 
+.row {
+  width: 100%; }
+
+p {
+  margin-top: 0.3rem !important;
+  font-size: large; }
+
+.badgeAbs {
+  position: fixed;
+  margin-left: -0.8rem !important;
+  margin-top: -0.5rem;
+  background-color: #364437 !important;
+  color: white !important; }
+
+.swal2-confirm {
+  padding: 0.9em 2.1875em;
+  border: 0;
+  border-radius: 0.1875em;
+  background-color: #364437 !important;
+  box-shadow: none;
+  color: #fff;
+  font-size: 1.125em;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer; }
+
+.swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 3px #8da58f; }
+
 .active {
   display: block; }
 
@@ -168,6 +198,55 @@ body {
     z-index: 999; }
   body .fw-bolder {
     font-size: 1rem; }
+
+/*Animación de las cards de productos*/
+.delay-1 {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
+  animation-delay: 0.2s; }
+
+.delay-2 {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  -o-animation-delay: 0.3s;
+  animation-delay: 0.3s; }
+
+.delay-3 {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  -o-animation-delay: 0.4s;
+  animation-delay: 0.4s; }
+
+.delay-4 {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+  animation-delay: 0.5s; }
+
+.delay-5 {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  animation-delay: 0.6s; }
+
+.delay-6 {
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  -o-animation-delay: 0.7s;
+  animation-delay: 0.7s; }
+
+.delay-7 {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  -o-animation-delay: 0.8s;
+  animation-delay: 0.8s; }
+
+.delay-8 {
+  -webkit-animation-delay: 0.9s;
+  -moz-animation-delay: 0.9s;
+  -o-animation-delay: 0.9s;
+  animation-delay: 0.9s; }
 
 .footer {
   display: flex;
@@ -272,8 +351,8 @@ body {
 
 .btn-primary {
   color: #fff;
-  background-color: #669169;
-  border-color: #364437; }
+  background-color: #8da58f;
+  border-color: #8da58f; }
 
 .btn-primary:hover {
   color: #fff;

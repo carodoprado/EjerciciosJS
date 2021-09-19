@@ -54,3 +54,13 @@ body {
     }
 }
 
+/*Animación de las cards de productos*/
+
+@for $i from 1 through 8 {
+    .delay-#{$i} {
+      -webkit-animation-delay: (0.1s + $i/10);
+      -moz-animation-delay: (0.1s + $i/10);
+      -o-animation-delay: (0.1s + $i/10);
+      animation-delay:  (0.1s + $i/10);
+    }
+  }
