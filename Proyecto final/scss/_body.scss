@@ -1,11 +1,11 @@
-.active{
+.active {
 
     display: block;
 }
 
 .botones:hover {
 
-    background-color: #364437;
+    background-color: $primary-color;
 }
 
 .py-5 {
@@ -16,6 +16,8 @@
 
 body {
 
+    overflow: inherit !important;
+    padding-right: inherit !important;
     overflow-x: hidden;
     font-family: "Quicksand";
 
@@ -54,13 +56,14 @@ body {
     }
 }
 
+
 /*Animación de las cards de productos*/
 
 @for $i from 1 through 8 {
     .delay-#{$i} {
-      -webkit-animation-delay: (0.1s + $i/10);
-      -moz-animation-delay: (0.1s + $i/10);
-      -o-animation-delay: (0.1s + $i/10);
-      animation-delay:  (0.1s + $i/10);
+        -webkit-animation-delay: (0.1s + $i/10);
+        -moz-animation-delay: (0.1s + $i/10);
+        -o-animation-delay: (0.1s + $i/10);
+        animation-delay: (0.1s + $i/10);
     }
-  }
+}

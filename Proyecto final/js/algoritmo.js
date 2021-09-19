@@ -126,8 +126,16 @@ $(document).ready(function () {
 
 function mostrarCantidad(carrito) {
 
-  let cantidad = document.getElementById("cantidad");
-  cantidad.innerHTML = carrito.productos.length;
+  let total = 0;
+
+  for (producto of carrito.productos) {
+
+    total = total + producto.cantidad;
+
+  }
+
+  $("#cantidad").html(total);
+
 
 }
 
@@ -200,7 +208,7 @@ function dibujarCard(producto) {
   $(tagA).attr("data-id", producto.id);
   $(tagA).attr("data-bs-target", "#addCartModal")
   $(tagA).attr("data-bs-toggle", "modal")
-  $(tagA).html("Agregar al carrito");
+  $(tagA).html("<i class=\"fas fa-shopping-cart\"></i> Agregar ");
   $(divTextCenter).append(tagA);
 
 
@@ -288,7 +296,7 @@ function dibujarProductoCarrito(producto) {
   $(i).addClass("far fa-trash-alt");
   $(divCinco).append(i);
 
-/*Elimina un producto del carrito*/
+  /*Elimina un producto del carrito*/
 
   $(".trash-icon").click(function (e) {
 
